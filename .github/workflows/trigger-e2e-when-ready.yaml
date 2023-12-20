@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Wait
-        run: sleep 90
+        run: sleep 30
       - name: Trigger e2e-dev workflow
         run: |
           curl -X POST \
