@@ -32,5 +32,5 @@ jobs:
             curl -X POST \
             -H "Accept: application/vnd.github.v3+json" \
             -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-            https://api.github.com/TanyaKars/workflows/workflows/e2e.yaml/dispatches \
+            https://api.github.com/repos/TanyaKars/workflows/workflows/e2e.yaml/dispatches \
             -d '{"ref":"${{ github.ref }}"}'
