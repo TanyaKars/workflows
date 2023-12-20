@@ -2,8 +2,6 @@ name: Ready for the review
 on:
  pull_request:
     types: [ready_for_review]
-env:
-  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 jobs:
   trigger-check-pr-status:
     runs-on: ubuntu-latest
@@ -14,7 +12,9 @@ jobs:
             -H "Accept: application/vnd.github.v3+json" \
             -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
             https://api.github.com/repos/TanyaKars/workflows/workflows/check-pr-statusyaml/dispatches \
-            -d '{"ref":"${{ github.ref }}"}'
+            -d '{"ref":"${{ github.head_ref }}"}'
+        env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         
   trigger-e2e:
     runs-on: ubuntu-latest
@@ -27,4 +27,6 @@ jobs:
             -H "Accept: application/vnd.github.v3+json" \
             -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
             https://api.github.com/repos/TanyaKars/workflows/workflows/e2e.yaml/dispatches \
-            -d '{"ref":"${{ github.ref }}"}'
+            -d '{"ref":"${{ github.head_ref }}"}'
+        env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
